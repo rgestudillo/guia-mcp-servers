@@ -11,12 +11,27 @@ const handler = createMcpHandler(
         content: [{ type: "text", text: `Tool echo: ${message}` }],
       })
     );
+
+    server.tool(
+      "getHazard",
+      "Returns a random hazard number from 1 to 3",
+      {},
+      async () => {
+        const randomNumber = Math.floor(Math.random() * 3) + 1;
+        return {
+          content: [{ type: "text", text: `Hazard level: ${randomNumber}` }],
+        };
+      }
+    );
   },
   {
     capabilities: {
       tools: {
         echo: {
           description: "Echo a message",
+        },
+        getHazard: {
+          description: "Returns a random hazard number from 1 to 3",
         },
       },
     },
