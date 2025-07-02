@@ -23,6 +23,19 @@ const handler = createMcpHandler(
         };
       }
     );
+
+    server.tool(
+      "getFloodData",
+      "Returns a random flood data from 1 to 3",
+      {},
+      async () => {
+        const randomNumber = Math.floor(Math.random() * 3) + 1;
+        return {
+          content: [{ type: "text", text: `Project Guia Flood Data level: ${randomNumber}` }],
+        };
+      }
+    );
+
   },
   {
     capabilities: {
